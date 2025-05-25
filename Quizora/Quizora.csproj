@@ -57,6 +57,7 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -98,11 +99,38 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddStudents.Designer.cs">
+      <DependentUpon>AddStudents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin_form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Admin_form.Designer.cs">
       <DependentUpon>Admin_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditStudentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditStudentDetails.Designer.cs">
+      <DependentUpon>EditStudentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExamForm.Designer.cs">
+      <DependentUpon>ExamForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExamResult.cs" />
+    <Compile Include="ExamResult2.cs" />
+    <Compile Include="ExamResultDisplay.cs" />
+    <Compile Include="ExamTimeInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExamTimeInputForm.Designer.cs">
+      <DependentUpon>ExamTimeInputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -113,11 +141,41 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
+    <Compile Include="StudentDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentDashboard.Designer.cs">
+      <DependentUpon>StudentDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentRegistration.Designer.cs">
+      <DependentUpon>StudentRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="teacher_UC\UC_AddQuestionsToPapers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="teacher_UC\UC_AddQuestionsToPapers.Designer.cs">
+      <DependentUpon>UC_AddQuestionsToPapers.cs</DependentUpon>
+    </Compile>
     <Compile Include="teacher_UC\UC_addNewQuestion.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="teacher_UC\UC_addNewQuestion.Designer.cs">
       <DependentUpon>UC_addNewQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="teacher_UC\UC_manageStudents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="teacher_UC\UC_manageStudents.Designer.cs">
+      <DependentUpon>UC_manageStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="teacher_UC\UC_studentResults.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="teacher_UC\UC_studentResults.Designer.cs">
+      <DependentUpon>UC_studentResults.cs</DependentUpon>
     </Compile>
     <Compile Include="teacher_UC\UC_updateQuestions.cs">
       <SubType>UserControl</SubType>
@@ -125,8 +183,27 @@
     <Compile Include="teacher_UC\UC_updateQuestions.Designer.cs">
       <DependentUpon>UC_updateQuestions.cs</DependentUpon>
     </Compile>
+    <Compile Include="teacher_UC\UC_viewAndDeleteQuestions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="teacher_UC\UC_viewAndDeleteQuestions.Designer.cs">
+      <DependentUpon>UC_viewAndDeleteQuestions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <EmbeddedResource Include="AddStudents.resx">
+      <DependentUpon>AddStudents.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin_form.resx">
       <DependentUpon>Admin_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStudentDetails.resx">
+      <DependentUpon>EditStudentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExamForm.resx">
+      <DependentUpon>ExamForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExamTimeInputForm.resx">
+      <DependentUpon>ExamTimeInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -140,11 +217,29 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StudentDashboard.resx">
+      <DependentUpon>StudentDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentRegistration.resx">
+      <DependentUpon>StudentRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="teacher_UC\UC_AddQuestionsToPapers.resx">
+      <DependentUpon>UC_AddQuestionsToPapers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="teacher_UC\UC_addNewQuestion.resx">
       <DependentUpon>UC_addNewQuestion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="teacher_UC\UC_manageStudents.resx">
+      <DependentUpon>UC_manageStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="teacher_UC\UC_studentResults.resx">
+      <DependentUpon>UC_studentResults.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="teacher_UC\UC_updateQuestions.resx">
       <DependentUpon>UC_updateQuestions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="teacher_UC\UC_viewAndDeleteQuestions.resx">
+      <DependentUpon>UC_viewAndDeleteQuestions.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

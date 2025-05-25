@@ -49,6 +49,11 @@
             this.txt_Question = new System.Windows.Forms.TextBox();
             this.btn_update = new Guna.UI2.WinForms.Guna2Button();
             this.btn_reset = new Guna.UI2.WinForms.Guna2Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_Time = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +74,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(132, 251);
+            this.label2.Location = new System.Drawing.Point(55, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 25);
             this.label2.TabIndex = 1;
@@ -77,10 +82,11 @@
             // 
             // cmb_PaperNum
             // 
+            this.cmb_PaperNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_PaperNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_PaperNum.ForeColor = System.Drawing.Color.Black;
             this.cmb_PaperNum.FormattingEnabled = true;
-            this.cmb_PaperNum.Location = new System.Drawing.Point(322, 248);
+            this.cmb_PaperNum.Location = new System.Drawing.Point(245, 52);
             this.cmb_PaperNum.Name = "cmb_PaperNum";
             this.cmb_PaperNum.Size = new System.Drawing.Size(121, 33);
             this.cmb_PaperNum.TabIndex = 2;
@@ -88,10 +94,11 @@
             // 
             // cmb_QuestionNum
             // 
+            this.cmb_QuestionNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_QuestionNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_QuestionNum.ForeColor = System.Drawing.Color.Black;
             this.cmb_QuestionNum.FormattingEnabled = true;
-            this.cmb_QuestionNum.Location = new System.Drawing.Point(1057, 250);
+            this.cmb_QuestionNum.Location = new System.Drawing.Point(980, 54);
             this.cmb_QuestionNum.Name = "cmb_QuestionNum";
             this.cmb_QuestionNum.Size = new System.Drawing.Size(121, 33);
             this.cmb_QuestionNum.TabIndex = 4;
@@ -101,7 +108,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(844, 251);
+            this.label3.Location = new System.Drawing.Point(767, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(165, 25);
             this.label3.TabIndex = 3;
@@ -263,11 +270,55 @@
             this.btn_reset.Text = "Reset";
             this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(132, 342);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(145, 25);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "Time Duration :";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmb_QuestionNum);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cmb_PaperNum);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(77, 196);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1201, 117);
+            this.groupBox1.TabIndex = 32;
+            this.groupBox1.TabStop = false;
+            // 
+            // txt_Time
+            // 
+            this.txt_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Time.Location = new System.Drawing.Point(290, 342);
+            this.txt_Time.Name = "txt_Time";
+            this.txt_Time.Size = new System.Drawing.Size(81, 30);
+            this.txt_Time.TabIndex = 33;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(377, 347);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(80, 25);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "minutes";
+            // 
             // UC_updateQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txt_Time);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_reset);
             this.Controls.Add(this.btn_update);
             this.Controls.Add(this.cmb_answer);
@@ -282,14 +333,12 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_Question);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.cmb_QuestionNum);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cmb_PaperNum);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UC_updateQuestions";
             this.Size = new System.Drawing.Size(1507, 1155);
             this.Load += new System.EventHandler(this.UC_updateQuestions_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,5 +366,9 @@
         private System.Windows.Forms.TextBox txt_Question;
         private Guna.UI2.WinForms.Guna2Button btn_update;
         private Guna.UI2.WinForms.Guna2Button btn_reset;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txt_Time;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

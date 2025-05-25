@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using Microsoft.VisualBasic;
+
 
 namespace Quizora.teacher_UC
 {
@@ -81,6 +83,18 @@ namespace Quizora.teacher_UC
 
         private void btn_next_Click_1(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txt_Question.Text) ||
+                string.IsNullOrWhiteSpace(txt_option1.Text) ||
+                string.IsNullOrWhiteSpace(txt_option2.Text) ||
+                string.IsNullOrWhiteSpace(txt_option3.Text) ||
+                string.IsNullOrWhiteSpace(txt_option4.Text) ||
+                cmb_answer.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(txt_paperNumber.Text))
+            {
+                MessageBox.Show("Please complete all fields before saving.", "Missing Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             SaveQuestion();
 
             questionCounter++;
@@ -94,10 +108,21 @@ namespace Quizora.teacher_UC
             cmb_answer.SelectedIndex = -1;
         }
 
-        private void btn_finish_Click(object sender, EventArgs e)
+        private async void btn_finish_Click(object sender, EventArgs e)
         {
-            SaveQuestion();
-            MessageBox.Show("Paper saved successfully!");
+            var timeForm = new ExamTimeInputForm();
+            if (timeForm.ShowDialog() == DialogResult.OK)
+            {
+                if (int.TryParse(timeForm.EnteredTime, out int durationMinutes))
+                {
+                    await client.SetAsync($"papers/{txt_paperNumber.Text}/duration", durationMinutes);
+                    MessageBox.Show("Paper added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid time. Time not saved.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
     }
 }

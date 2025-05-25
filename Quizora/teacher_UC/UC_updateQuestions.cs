@@ -58,6 +58,18 @@ namespace Quizora.teacher_UC
 
         private async void cmb_PaperNum_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // 🆕 Clear all previous selections and fields
+            cmb_QuestionNum.SelectedIndex = -1;
+            cmb_QuestionNum.Items.Clear();
+
+            txt_Question.Clear();
+            txt_option1.Clear();
+            txt_option2.Clear();
+            txt_option3.Clear();
+            txt_option4.Clear();
+            cmb_answer.SelectedIndex = -1;
+            txt_Time.Clear();
+
             if (cmb_PaperNum.SelectedIndex == -1)
             {
                 return;
@@ -65,18 +77,28 @@ namespace Quizora.teacher_UC
 
             string paperNo = cmb_PaperNum.SelectedItem.ToString();
 
+            // Load questions
             FirebaseResponse res = await client.GetAsync("papers/" + paperNo + "/questions");
 
             if (res.Body != null)
             {
-                Dictionary<string, object>questions = res.ResultAs<Dictionary<string , object>>();
-
-                cmb_QuestionNum.Items.Clear();
-
-                foreach(var q in questions.Keys)
+                Dictionary<string, object> questions = res.ResultAs<Dictionary<string, object>>();
+                foreach (var q in questions.Keys)
                 {
                     cmb_QuestionNum.Items.Add(q);
                 }
+            }
+
+            // Load exam duration
+            FirebaseResponse timeRes = await client.GetAsync("papers/" + paperNo + "/duration");
+            if (timeRes.Body != "null")
+            {
+                int duration = timeRes.ResultAs<int>();
+                txt_Time.Text = duration.ToString();
+            }
+            else
+            {
+                txt_Time.Clear();
             }
 
         }
@@ -113,13 +135,19 @@ namespace Quizora.teacher_UC
         {
             if (cmb_PaperNum.SelectedItem == null || cmb_QuestionNum.SelectedItem == null)
             {
-                MessageBox.Show("Please select both Paper and Question Number");
+                MessageBox.Show("Please select both the paper number and question number before updating.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            if (cmb_answer.SelectedItem == null)
+            if (string.IsNullOrWhiteSpace(txt_Question.Text) ||
+                string.IsNullOrWhiteSpace(txt_option1.Text) ||
+                string.IsNullOrWhiteSpace(txt_option2.Text) ||
+                string.IsNullOrWhiteSpace(txt_option3.Text) ||
+                string.IsNullOrWhiteSpace(txt_option4.Text) ||
+                cmb_PaperNum.SelectedIndex == -1 ||
+                cmb_QuestionNum.SelectedIndex == -1 ||
+                cmb_answer.SelectedIndex == -1)
             {
-                MessageBox.Show("Please select the correct answer");
+                MessageBox.Show("Please complete all fields before saving.", "Missing Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -137,14 +165,21 @@ namespace Quizora.teacher_UC
 
             FirebaseResponse res = await client.SetAsync($"papers/{updatedQuestion.PaperNo}/questions/{updatedQuestion.QuestionNo}", updatedQuestion);
 
+            // 🆕 Save the duration if valid
+            if (int.TryParse(txt_Time.Text, out int duration))
+            {
+                await client.SetAsync($"papers/{updatedQuestion.PaperNo}/duration", duration);
+            }
+
             if (res.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                MessageBox.Show("Question updated successfully!");
+                MessageBox.Show("Question updated successfully!", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Failed to update question.");
+                MessageBox.Show("An error occurred while updating the question. Please try again.", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void btn_reset_Click(object sender, EventArgs e)

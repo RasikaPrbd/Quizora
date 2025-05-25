@@ -59,9 +59,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(130, 85);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 37);
+            this.label1.Size = new System.Drawing.Size(186, 37);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Add Questions";
+            this.label1.Text = "Add Papers";
             // 
             // label2
             // 
@@ -100,7 +100,7 @@
             this.lbl_qNum.Name = "lbl_qNum";
             this.lbl_qNum.Size = new System.Drawing.Size(34, 25);
             this.lbl_qNum.TabIndex = 5;
-            this.lbl_qNum.Text = "10";
+            this.lbl_qNum.Text = "00";
             // 
             // label5
             // 
@@ -261,7 +261,7 @@
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(180, 45);
             this.btn_next.TabIndex = 31;
-            this.btn_next.Text = "Next";
+            this.btn_next.Text = "Save";
             this.btn_next.Click += new System.EventHandler(this.btn_next_Click_1);
             // 
             // btn_finish

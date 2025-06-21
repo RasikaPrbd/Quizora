@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizora", "Quizora\Quizora.csproj", "{EC38269C-07EB-4ACB-9D65-4BE55010F9A4}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QuizoraInstaller", "QuizoraInstaller\QuizoraInstaller.vdproj", "{2DEEC3F9-298C-421D-A2C4-DD7B5656F156}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{EC38269C-07EB-4ACB-9D65-4BE55010F9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC38269C-07EB-4ACB-9D65-4BE55010F9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC38269C-07EB-4ACB-9D65-4BE55010F9A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DEEC3F9-298C-421D-A2C4-DD7B5656F156}.Debug|Any CPU.ActiveCfg = Debug
+		{2DEEC3F9-298C-421D-A2C4-DD7B5656F156}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

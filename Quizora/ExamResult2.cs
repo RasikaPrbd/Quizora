@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Quizora
 {
-    internal class ExamResult2
+    public class ExamResult2
     {
-        public string dateTime { get; set; }
-        public int correctAnswers { get; set; }
-        public int totalQuestions { get; set; }
+        public int Correct { get; set; }
+        public int Total { get; set; }
+        public string DateTime { get; set; }
+        public string PaperNo { get; set; }
+        public string Percentage { get; set; }
+        public Dictionary<string, string> selectedAnswers { get; set; }
     }
+
 }

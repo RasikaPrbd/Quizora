@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 
 namespace Quizora
@@ -24,6 +26,7 @@ namespace Quizora
         private User currentUser;
         private int switchCount = 0;
 
+        private bool isSubmitting = false;
 
         private int timeLeftInSeconds;
 
@@ -59,6 +62,23 @@ namespace Quizora
             this.WindowState = FormWindowState.Maximized;
             //this.Deactivate += ExamForm_Deactivate;
 
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            this.TopMost = true; // Keep on top
+
+            KeyboardInterceptor.StartBlock(); // 🚫 Block system keys
+
+            KillProcesses(new string[]
+            {
+                "chrome",        // Google Chrome
+                "msedge",        // Microsoft Edge
+                "firefox",       // Mozilla Firefox
+                "opera",         // Opera
+                "brave",         // Brave browser
+                "chatgpt",       // ChatGPT desktop app (if exists)
+                "notion",        // Example AI-related tool
+                "bing",          // Copilot (might be embedded in Edge)
+            });
 
             lbl_Papernum.Text = "Paper: " + paperNo;
             lbl_regNum.Text = "Reg No: " + currentUser.RegNo;
@@ -169,43 +189,53 @@ namespace Quizora
 
         private async void btn_submit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Are you sure you want to submit the exam?", "Submit Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            KeyboardInterceptor.StopBlock();
+
+            var confirm = MessageBox.Show("Are you sure you want to submit the exam?", "Submit Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes)
+                return;
+
+            SaveAnswer(); // Save last answer
+            int correct = 0;
+
+            for (int i = 0; i < questions.Count; i++)
             {
-                SaveAnswer(); // Save the last answer
-                int correct = 0;
-
-                for (int i = 0; i < questions.Count; i++)
-                {
-                    string selected = selectedAnswers.ContainsKey(i) ? selectedAnswers[i] : "";
-                    if (selected == questions[i].CorrectAnswer)
-                        correct++;
-                }
-
-                MessageBox.Show($"You got {correct} out of {questions.Count} correct.");
-
-                // After calculating 'correct'
-                string dateTimeNow = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                string regNo = currentUser.RegNo;
-
-                var examResult = new
-                {
-                    PaperNo = paperNo,
-                    DateTime = dateTimeNow,
-                    Correct = correct,
-                    Total = questions.Count,
-                    Percentage = ((double)correct / questions.Count * 100).ToString("0.00")
-                };
-
-                // Save to Firebase: results/{regNo}/{paperNo}
-                await client.SetAsync($"results/{regNo}/{paperNo}", examResult);
-
-
-                // TODO: Close form and go to dashboard
-                StudentDashboard studentDashboard = new StudentDashboard(currentUser);
-                studentDashboard.Show();
-                this.Close();
-                // Temporarily close here
+                string selected = selectedAnswers.ContainsKey(i) ? selectedAnswers[i] : "";
+                if (selected == questions[i].CorrectAnswer)
+                    correct++;
             }
+
+            MessageBox.Show($"You got {correct} out of {questions.Count} correct.");
+
+            string dateTimeNow = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string regNo = currentUser.RegNo;
+
+            // Convert selectedAnswers to string-keyed dictionary
+            var selectedAnswersToSave = new Dictionary<string, string>();
+            foreach (var entry in selectedAnswers)
+            {
+                string questionNo = (entry.Key + 1).ToString("D2");
+                selectedAnswersToSave[questionNo] = entry.Value;
+            }
+
+            var examResult = new
+            {
+                PaperNo = paperNo,
+                DateTime = dateTimeNow,
+                Correct = correct,
+                Total = questions.Count,
+                Percentage = ((double)correct / questions.Count * 100).ToString("0.00"),
+                selectedAnswers = selectedAnswersToSave
+            };
+
+            await client.SetAsync($"results/{regNo}/{paperNo}", examResult);
+
+            await client.SetAsync($"results/{regNo}/{paperNo}/answers", selectedAnswersToSave);
+
+            StudentDashboard studentDashboard = new StudentDashboard(currentUser);
+            studentDashboard.Show();
+            this.Close();
+
         }
 
         private string FormatTime(int totalSeconds)
@@ -234,41 +264,96 @@ namespace Quizora
             }
 
         }
-        private void AutoSubmit()
+        /// <summary>
+        /// Final one‑shot submission path (timeout or cheating).
+        /// Writes the result, shows a single message, then returns to dashboard.
+        /// </summary>
+        private async void AutoSubmit()
         {
+            KeyboardInterceptor.StopBlock();
+
+            // 1️⃣  Exit immediately if we’ve already started submitting
+            if (isSubmitting) return;
+            isSubmitting = true;
+
+            // Detach the deactivate handler so it can’t fire again while we’re closing
+         //   this.Deactivate -= ExamForm_Deactivate;
+
+            // 2️⃣  Stop timer and capture the very last answer
+            examTimer.Stop();
             SaveAnswer();
 
+            // 3️⃣  Calculate score
             int correct = 0;
             for (int i = 0; i < questions.Count; i++)
             {
-                string selected = selectedAnswers.ContainsKey(i) ? selectedAnswers[i] : "";
-                if (selected == questions[i].CorrectAnswer)
-                    correct++;
+                string selected = selectedAnswers.TryGetValue(i, out var val) ? val : "";
+                if (selected == questions[i].CorrectAnswer) correct++;
             }
 
-            MessageBox.Show("Your exam has been submitted automatically.", "Exam Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            MessageBox.Show($"You answered {correct} out of {questions.Count} correctly.", "Exam Submitted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // 4️⃣  Build answer map (01 → Option xx)
+            var answersToSave = selectedAnswers
+                .ToDictionary(kvp => (kvp.Key + 1).ToString("D2"), kvp => kvp.Value);
 
-            // TODO: return to dashboard
-            StudentDashboard studentDashboard = new StudentDashboard();
-            studentDashboard.Show();
-            this.Close(); 
-            
+            // 5️⃣  Persist to Firebase
+            string now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string regNo = currentUser.RegNo;
+
+            var resultObj = new
+            {
+                PaperNo = paperNo,
+                DateTime = now,
+                Correct = correct,
+                Total = questions.Count,
+                Percentage = ((double)correct / questions.Count * 100).ToString("0.00"),
+                selectedAnswers = answersToSave
+            };
+
+            try
+            {
+                await client.SetAsync($"results/{regNo}/{paperNo}", resultObj);
+                await client.SetAsync($"results/{regNo}/{paperNo}/answers", answersToSave);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving results:\n{ex.Message}", "Save Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // 6️⃣  Notify the student once
+            MessageBox.Show(
+                $"Your exam was submitted automatically.\n\n" +
+                $"Score : {correct} / {questions.Count}",
+                "Exam Submitted",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            // 7️⃣  Return to dashboard
+            var dash = new StudentDashboard(currentUser);
+            dash.Show();
+            this.Close();          // closes the exam form safely
         }
+
         /*private void ExamForm_Deactivate(object sender, EventArgs e)
         {
+            if (isSubmitting) return;      // already in the middle of submission
+
             switchCount++;
 
             if (switchCount == 1)
             {
-                MessageBox.Show("You switched away from the exam window. Please stay focused!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You switched away from the exam window. Please stay focused!",
+                                "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (switchCount >= 2)
             {
-                MessageBox.Show("You switched away multiple times. Exam will be submitted.", "Cheating Detected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                AutoSubmit(); // ✅ Make sure this method handles submission logic
+                // ⚠️  do NOT set isSubmitting here; let AutoSubmit handle it once
+                MessageBox.Show("You switched away multiple times. Your exam will now be submitted.",
+                                "Cheating Detected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AutoSubmit();              // single, final call
             }
         }*/
+
         private void DisableCheatingControls(Control ctrl)
         {
             // Disable right-click
@@ -283,11 +368,102 @@ namespace Quizora
             // Block Ctrl+C and Ctrl+V
             ctrl.KeyDown += (s, e) =>
             {
-                if (e.Control && (e.KeyCode == Keys.C || e.KeyCode == Keys.V))
+                if (e.Control && (e.KeyCode == Keys.C || e.KeyCode == Keys.V || e.KeyCode == Keys.A))
                 {
                     e.SuppressKeyPress = true;
                 }
             };
+        }
+        public class KeyboardInterceptor
+        {
+            private const int WH_KEYBOARD_LL = 13;
+            private const int WM_KEYDOWN = 0x0100;
+
+            private static LowLevelKeyboardProc _proc = HookCallback;
+            private static IntPtr _hookID = IntPtr.Zero;
+
+            public static void StartBlock()
+            {
+                _hookID = SetHook(_proc);
+            }
+
+            public static void StopBlock()
+            {
+                UnhookWindowsHookEx(_hookID);
+            }
+
+            private static IntPtr SetHook(LowLevelKeyboardProc proc)
+            {
+                using (Process curProcess = Process.GetCurrentProcess())
+                using (ProcessModule curModule = curProcess.MainModule)
+                {
+                    return SetWindowsHookEx(WH_KEYBOARD_LL, proc,
+                        GetModuleHandle(curModule.ModuleName), 0);
+                }
+            }
+
+            private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
+
+            private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+            {
+                if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
+                {
+                    int vkCode = Marshal.ReadInt32(lParam);
+                    bool alt = (Control.ModifierKeys & Keys.Alt) == Keys.Alt;
+                    bool ctrl = (Control.ModifierKeys & Keys.Control) == Keys.Control;
+
+                    // Block common keys
+                    if (
+                        vkCode == 0x5B || // Left Windows
+                        vkCode == 0x5C || // Right Windows
+                        (vkCode == (int)Keys.Tab && alt) ||            // Alt+Tab
+                        (vkCode == (int)Keys.Escape && ctrl) ||        // Ctrl+Esc
+                        (vkCode == (int)Keys.F4 && alt) ||             // Alt+F4
+                        (vkCode == (int)Keys.D && (Control.ModifierKeys & Keys.LWin) == Keys.LWin) || // Win+D
+                        (vkCode == (int)Keys.M && (Control.ModifierKeys & Keys.LWin) == Keys.LWin)    // Win+M
+                    )
+                    {
+                        return (IntPtr)1; // Block the key
+                    }
+
+                }
+
+                return CallNextHookEx(_hookID, nCode, wParam, lParam);
+            }
+
+            // Win32 imports
+            [DllImport("user32.dll")]
+            private static extern IntPtr SetWindowsHookEx(int idHook,
+                LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+
+            [DllImport("user32.dll")]
+            private static extern bool UnhookWindowsHookEx(IntPtr hhk);
+
+            [DllImport("user32.dll")]
+            private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode,
+                IntPtr wParam, IntPtr lParam);
+
+            [DllImport("kernel32.dll")]
+            private static extern IntPtr GetModuleHandle(string lpModuleName);
+        }
+        private void KillProcesses(string[] processNames)
+        {
+            foreach (string name in processNames)
+            {
+                try
+                {
+                    var processes = Process.GetProcessesByName(name);
+                    foreach (var p in processes)
+                    {
+                        p.Kill();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Optional: log or show error (not recommended during exams)
+                    Console.WriteLine($"Error killing {name}: {ex.Message}");
+                }
+            }
         }
 
     }

@@ -28,6 +28,8 @@ namespace Quizora
         {
             InitializeComponent();
             currentUser = user;
+            dgv_Results.CellContentClick += dgv_Results_CellContentClick;
+
         }
 
         public StudentDashboard()
@@ -46,12 +48,12 @@ namespace Quizora
                 MessageBox.Show("Connection to firebase is failed");
             }
 
-
             // Show student info
             lbl_studentName.Text = currentUser.FirstName + " " + currentUser.LastName;
             lbl_regNo.Text = currentUser.RegNo;
 
             LoadPendingExams();
+
             // Load papers
             /*FirebaseResponse res = await client.GetAsync("papers");
             if (res.Body != "null")
@@ -176,6 +178,17 @@ namespace Quizora
                 dgv_Results.Columns.Add("Correct", "Correct / Total");
                 dgv_Results.Columns.Add("Percentage", "Percentage");
 
+                // Add the 'View' link column if not already added
+                if (!dgv_Results.Columns.Contains("View"))
+                {
+                    DataGridViewLinkColumn linkColumn = new DataGridViewLinkColumn();
+                    linkColumn.HeaderText = "Details";
+                    linkColumn.Name = "View";
+                    linkColumn.Text = "View";
+                    linkColumn.UseColumnTextForLinkValue = true;
+                    dgv_Results.Columns.Add(linkColumn);
+                }
+
                 if (results != null)
                 {
                     dgv_Results.Visible = true;
@@ -203,6 +216,35 @@ namespace Quizora
                 MessageBox.Show("Error loading results: " + ex.Message);
             }
         }
+        private bool isDetailOpen = false;
 
+        private void dgv_Results_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            if (e.RowIndex >= 0 && dgv_Results.Columns[e.ColumnIndex].Name == "View")
+            {
+                // Get PaperNo from the clicked row
+                string paperNo = dgv_Results.Rows[e.RowIndex].Cells["PaperNo"].Value.ToString();
+
+                // Open a new form to show detailed result
+                DetailedResultForm detailedForm = new DetailedResultForm(currentUser.RegNo, paperNo);
+                detailedForm.ShowDialog(); // Show as modal
+            }
+
+        }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to exit the application?",
+                                         "Confirm Exit",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

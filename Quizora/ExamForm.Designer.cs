@@ -59,9 +59,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(230, 189);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(273, 29);
+            this.label1.Size = new System.Drawing.Size(259, 29);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Registratuion Number :";
+            this.label1.Text = "Registration Number :";
             // 
             // label2
             // 

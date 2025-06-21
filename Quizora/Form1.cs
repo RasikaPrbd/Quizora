@@ -35,6 +35,7 @@ namespace Quizora
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
 
+            btn_exit.BackColor = Color.Transparent;
             panel1.Visible=false;
             panel2.Visible=false;
             lbl_invalidPass.Visible=false;
@@ -49,19 +50,7 @@ namespace Quizora
             {
                 MessageBox.Show("connection is established");
             } */
-        }
-
-        private void btn_exit_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to exit the application?",
-                                         "Confirm Exit",
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+            btn_exit.BackColor = Color.Transparent;
         }
 
         private void cmb_userType_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,6 +61,7 @@ namespace Quizora
                 panel1.Visible=false;
                 panel2.Visible=true;
                 panel2.BringToFront();
+                txt_enroll.Focus();
                 //panel1.SendToBack();
             }
             else if(cmb_userType.SelectedIndex == 1)
@@ -79,6 +69,7 @@ namespace Quizora
                 panel1.Visible = true;
                 panel2.Visible = false;
                 panel1.BringToFront();
+                txt_name.Focus();
                 //panel2.SendToBack();
                 //MessageBox.Show("Admin panel visible now"); // ✅ DEBUG
 
@@ -113,7 +104,8 @@ namespace Quizora
             if (string.IsNullOrEmpty(regNo) || string.IsNullOrEmpty(password))
             {
                 lbl_invalidPassStu.Visible = true;
-               // MessageBox.Show("Please fill in both Register Number and Password.");
+                // MessageBox.Show("Please fill in both Register Number and Password.");
+                txt_enroll.Focus();
                 return;
             }
 
@@ -125,6 +117,9 @@ namespace Quizora
                 {
                     lbl_invalidPassStu.Visible = true;
                   //  MessageBox.Show("Register Number not found.");
+                    txt_enroll.Clear();
+                    txt_stuPassword.Clear();
+                    txt_enroll.Focus();
                     return;
                 }
 
@@ -133,7 +128,10 @@ namespace Quizora
                 if (user.Password != password)
                 {
                     lbl_invalidPassStu.Visible = true;
-                  //  MessageBox.Show("Incorrect password.");
+                    //  MessageBox.Show("Incorrect password.");
+                     txt_enroll.Clear();
+                    txt_stuPassword.Clear();
+                    txt_enroll.Focus();
                     return;
                 }
 
@@ -180,6 +178,10 @@ namespace Quizora
             else
             {
                 lbl_invalidPass.Visible = true;
+                txt_name.Clear();
+                txt_password.Clear();
+                txt_name.Focus();
+                return;
             }
         }
 
@@ -194,6 +196,74 @@ namespace Quizora
                 txt_password.PasswordChar = '*';
             }
         }
+
+        private void txt_name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_password.Focus(); // move to password field
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_AdminLogin.PerformClick(); // press login
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_name.Focus();
+                e.SuppressKeyPress= true;
+            }
+        }
+
+        private void txt_enroll_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_stuPassword.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_stuPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_StuLogin.PerformClick(); // login
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_enroll.Focus(); 
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_exit_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to exit the application?",
+                                         "Confirm Exit",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
-    
 }

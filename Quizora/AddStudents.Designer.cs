@@ -95,6 +95,7 @@
             this.txt_conPassword.Size = new System.Drawing.Size(340, 30);
             this.txt_conPassword.TabIndex = 43;
             this.txt_conPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_conPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_conPassword_KeyDown);
             // 
             // txt_password
             // 
@@ -106,6 +107,7 @@
             this.txt_password.Size = new System.Drawing.Size(340, 30);
             this.txt_password.TabIndex = 44;
             this.txt_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_password_KeyDown);
             // 
             // txt_email
             // 
@@ -116,6 +118,7 @@
             this.txt_email.Size = new System.Drawing.Size(340, 30);
             this.txt_email.TabIndex = 45;
             this.txt_email.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_email.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_email_KeyDown);
             // 
             // txt_regNo
             // 
@@ -126,6 +129,7 @@
             this.txt_regNo.Size = new System.Drawing.Size(340, 30);
             this.txt_regNo.TabIndex = 46;
             this.txt_regNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_regNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_regNo_KeyDown);
             // 
             // txt_lastName
             // 
@@ -136,6 +140,7 @@
             this.txt_lastName.Size = new System.Drawing.Size(340, 30);
             this.txt_lastName.TabIndex = 47;
             this.txt_lastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_lastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_lastName_KeyDown);
             // 
             // txt_firstName
             // 
@@ -146,6 +151,7 @@
             this.txt_firstName.Size = new System.Drawing.Size(340, 30);
             this.txt_firstName.TabIndex = 48;
             this.txt_firstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_firstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_firstName_KeyDown);
             // 
             // label7
             // 

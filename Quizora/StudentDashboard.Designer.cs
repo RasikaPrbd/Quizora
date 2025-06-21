@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDashboard));
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_studentName = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@
             this.btn_viewResults = new Guna.UI2.WinForms.Guna2Button();
             this.lnklbl_logout = new System.Windows.Forms.LinkLabel();
             this.dgv_Results = new System.Windows.Forms.DataGridView();
+            this.btn_exit = new Guna.UI2.WinForms.Guna2Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Results)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +52,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label2.Location = new System.Drawing.Point(502, 129);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(189, 29);
@@ -60,7 +64,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label1.Location = new System.Drawing.Point(502, 202);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(273, 29);
@@ -70,7 +76,9 @@
             // lbl_studentName
             // 
             this.lbl_studentName.AutoSize = true;
+            this.lbl_studentName.BackColor = System.Drawing.Color.Transparent;
             this.lbl_studentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_studentName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lbl_studentName.Location = new System.Drawing.Point(819, 131);
             this.lbl_studentName.Name = "lbl_studentName";
             this.lbl_studentName.Size = new System.Drawing.Size(73, 29);
@@ -80,7 +88,9 @@
             // lbl_regNo
             // 
             this.lbl_regNo.AutoSize = true;
+            this.lbl_regNo.BackColor = System.Drawing.Color.Transparent;
             this.lbl_regNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_regNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lbl_regNo.Location = new System.Drawing.Point(819, 202);
             this.lbl_regNo.Name = "lbl_regNo";
             this.lbl_regNo.Size = new System.Drawing.Size(95, 29);
@@ -91,6 +101,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label5.Location = new System.Drawing.Point(213, 64);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(257, 29);
@@ -113,6 +124,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label6.Location = new System.Drawing.Point(213, 147);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(134, 29);
@@ -123,6 +135,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label7.Location = new System.Drawing.Point(213, 206);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 29);
@@ -133,6 +146,7 @@
             // 
             this.lbl_questionCount.AutoSize = true;
             this.lbl_questionCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_questionCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lbl_questionCount.Location = new System.Drawing.Point(414, 147);
             this.lbl_questionCount.Name = "lbl_questionCount";
             this.lbl_questionCount.Size = new System.Drawing.Size(39, 29);
@@ -143,6 +157,7 @@
             // 
             this.lbl_time.AutoSize = true;
             this.lbl_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_time.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lbl_time.Location = new System.Drawing.Point(414, 206);
             this.lbl_time.Name = "lbl_time";
             this.lbl_time.Size = new System.Drawing.Size(39, 29);
@@ -172,6 +187,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.btn_Start);
             this.groupBox1.Controls.Add(this.lbl_time);
             this.groupBox1.Controls.Add(this.lbl_questionCount);
@@ -187,6 +203,7 @@
             // 
             // btn_viewResults
             // 
+            this.btn_viewResults.BackColor = System.Drawing.Color.Transparent;
             this.btn_viewResults.BorderRadius = 18;
             this.btn_viewResults.BorderThickness = 1;
             this.btn_viewResults.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -208,6 +225,7 @@
             // lnklbl_logout
             // 
             this.lnklbl_logout.AutoSize = true;
+            this.lnklbl_logout.BackColor = System.Drawing.Color.Transparent;
             this.lnklbl_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnklbl_logout.Location = new System.Drawing.Point(39, 36);
             this.lnklbl_logout.Name = "lnklbl_logout";
@@ -233,13 +251,34 @@
             this.dgv_Results.Size = new System.Drawing.Size(1328, 281);
             this.dgv_Results.TabIndex = 35;
             this.dgv_Results.Visible = false;
+            this.dgv_Results.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Results_CellContentClick);
+            // 
+            // btn_exit
+            // 
+            this.btn_exit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_exit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_exit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_exit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_exit.FillColor = System.Drawing.Color.White;
+            this.btn_exit.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_exit.ForeColor = System.Drawing.Color.White;
+            this.btn_exit.Image = ((System.Drawing.Image)(resources.GetObject("btn_exit.Image")));
+            this.btn_exit.ImageSize = new System.Drawing.Size(35, 35);
+            this.btn_exit.Location = new System.Drawing.Point(1900, 5);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(115, 77);
+            this.btn_exit.TabIndex = 36;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
             // StudentDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1902, 1153);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.dgv_Results);
             this.Controls.Add(this.lnklbl_logout);
             this.Controls.Add(this.btn_viewResults);
@@ -276,5 +315,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_viewResults;
         private System.Windows.Forms.LinkLabel lnklbl_logout;
         private System.Windows.Forms.DataGridView dgv_Results;
+        private Guna.UI2.WinForms.Guna2Button btn_exit;
     }
 }

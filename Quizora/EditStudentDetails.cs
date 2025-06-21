@@ -42,10 +42,6 @@ namespace Quizora
             client = new FireSharp.FirebaseClient(config);
         }
 
-        private void btn_clear_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private async void btn_update_Click(object sender, EventArgs e)
         {
@@ -88,6 +84,57 @@ namespace Quizora
             txt_lastName.Clear();
             txt_email.Clear();
             txt_password.Clear();
+        }
+
+        private void EditStudentDetails_Load(object sender, EventArgs e)
+        {
+            txt_firstName.Focus();
+        }
+
+        private void txt_firstName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_lastName.Focus(); 
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_lastName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_email.Focus(); 
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_firstName.Focus(); 
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_email_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_password.Focus(); 
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_lastName.Focus(); // move to password field
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_firstName.Focus(); // move to password field
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

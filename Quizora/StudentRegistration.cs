@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using System.Net;
+using System.Net.Mail;
 
 namespace Quizora
 {
@@ -37,6 +39,7 @@ namespace Quizora
                 MessageBox.Show("Connection failed!");
                 return;
             }
+            txt_firstName.Focus();
         }
 
         private async void btn_update_Click(object sender, EventArgs e)
@@ -78,6 +81,10 @@ namespace Quizora
             if (res.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 MessageBox.Show("Student has been registered successfully.", "Registration Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                SendEmailToStudent(user.Email, user.RegNo, user.Password);
+
+
                 // Optionally: redirect to login
                 txt_firstName.Text = "";
                 txt_lastName.Text = "";
@@ -120,6 +127,169 @@ namespace Quizora
             txt_email.Text = "";
             txt_password.Text = "";
             txt_conPassword.Text = "";
+            txt_firstName.Focus();
+        }
+
+        private void txt_firstName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_lastName.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_lastName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_regNo.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_firstName.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_regNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_email.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_lastName.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_email_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_password.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_regNo.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_conPassword.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_email.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_conPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_register.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_password.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+        
+        private void SendEmailToStudent(string toEmail, string regNo, string password)
+        {
+            try
+            {
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress("quizora.examinationsystem@gmail.com", "QUIZORA Admin");
+                message.To.Add(toEmail);
+                message.Subject = "Your QUIZORA Exam Account Has Been Created";
+
+                // 📧 HTML email body
+                message.IsBodyHtml = true;
+                message.Body = $@"
+                    <html>
+                    <body style='font-family:Segoe UI, sans-serif; color:#333;'>
+                        <h2 style='color:#4CAF50;'>Welcome to QUIZORA!</h2>
+                        <p>Dear Student,</p>
+                        <p>Your exam account has been created successfully. You can now log in using the following details:</p>
+                        <table style='border: 1px solid #ccc; padding: 10px;'>
+                            <tr>
+                                <td><strong>Username (Reg. No):</strong></td>
+                                <td>{regNo}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Password:</strong></td>
+                                <td>{password}</td>
+                            </tr>
+                        </table>
+                        <p>🔐 Please keep your login credentials safe.</p>
+                        <br>
+                        <p>Good luck with your exams!</p>
+                        <p style='font-size: 12px; color: #888;'>— QUIZORA Team</p>
+                    </body>
+                    </html>";
+
+                // SMTP settings
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential("quizora.examinationsystem@gmail.com", "kpdsbasysbeuqbtx");
+                smtp.EnableSsl = true;
+                smtp.Send(message);
+
+                MessageBox.Show("Registration email sent successfully!", "Email Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send registration email.\n\n" + ex.Message, "Email Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_email_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_conPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

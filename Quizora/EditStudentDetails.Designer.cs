@@ -83,6 +83,7 @@
             this.txt_password.Size = new System.Drawing.Size(340, 30);
             this.txt_password.TabIndex = 59;
             this.txt_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_password_KeyDown);
             // 
             // txt_email
             // 
@@ -93,6 +94,7 @@
             this.txt_email.Size = new System.Drawing.Size(340, 30);
             this.txt_email.TabIndex = 60;
             this.txt_email.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_email.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_email_KeyDown);
             // 
             // txt_regNo
             // 
@@ -113,6 +115,7 @@
             this.txt_lastName.Size = new System.Drawing.Size(340, 30);
             this.txt_lastName.TabIndex = 62;
             this.txt_lastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_lastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_lastName_KeyDown);
             // 
             // txt_firstName
             // 
@@ -123,6 +126,7 @@
             this.txt_firstName.Size = new System.Drawing.Size(340, 30);
             this.txt_firstName.TabIndex = 63;
             this.txt_firstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_firstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_firstName_KeyDown);
             // 
             // label5
             // 
@@ -214,6 +218,7 @@
             this.Controls.Add(this.label6);
             this.Name = "EditStudentDetails";
             this.Text = "EditStudentDetails";
+            this.Load += new System.EventHandler(this.EditStudentDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

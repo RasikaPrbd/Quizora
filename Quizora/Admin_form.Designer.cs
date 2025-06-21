@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_form));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_addQuestToPapers = new Guna.UI2.WinForms.Guna2Button();
             this.btn_manageStudentDetails = new Guna.UI2.WinForms.Guna2Button();
             this.btn_logout = new Guna.UI2.WinForms.Guna2Button();
             this.btn_results = new Guna.UI2.WinForms.Guna2Button();
@@ -47,14 +48,13 @@
             this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btn_addQuestToPapers = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Elipse6 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.uC_AddQuestionsToPapers1 = new Quizora.teacher_UC.UC_AddQuestionsToPapers();
             this.uC_studentResults1 = new Quizora.teacher_UC.UC_studentResults();
             this.uC_manageStudents1 = new Quizora.teacher_UC.UC_manageStudents();
             this.uC_viewAndDeleteQuestions1 = new Quizora.teacher_UC.UC_viewAndDeleteQuestions();
             this.uC_updateQuestions1 = new Quizora.teacher_UC.UC_updateQuestions();
             this.uC_addNewQuestion1 = new Quizora.teacher_UC.UC_addNewQuestion();
-            this.guna2Elipse6 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.uC_AddQuestionsToPapers1 = new Quizora.teacher_UC.UC_AddQuestionsToPapers();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -62,7 +62,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LimeGreen;
+            this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel1.Controls.Add(this.btn_addQuestToPapers);
             this.panel1.Controls.Add(this.btn_manageStudentDetails);
             this.panel1.Controls.Add(this.btn_logout);
@@ -78,6 +78,25 @@
             this.panel1.Size = new System.Drawing.Size(400, 1156);
             this.panel1.TabIndex = 0;
             // 
+            // btn_addQuestToPapers
+            // 
+            this.btn_addQuestToPapers.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btn_addQuestToPapers.CheckedState.BorderColor = System.Drawing.Color.White;
+            this.btn_addQuestToPapers.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btn_addQuestToPapers.CheckedState.ForeColor = System.Drawing.Color.Black;
+            this.btn_addQuestToPapers.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_addQuestToPapers.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_addQuestToPapers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_addQuestToPapers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_addQuestToPapers.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_addQuestToPapers.ForeColor = System.Drawing.Color.Black;
+            this.btn_addQuestToPapers.Location = new System.Drawing.Point(0, 400);
+            this.btn_addQuestToPapers.Name = "btn_addQuestToPapers";
+            this.btn_addQuestToPapers.Size = new System.Drawing.Size(397, 68);
+            this.btn_addQuestToPapers.TabIndex = 11;
+            this.btn_addQuestToPapers.Text = "Add Questions to Papers";
+            this.btn_addQuestToPapers.Click += new System.EventHandler(this.btn_addQuestToPapers_Click);
+            // 
             // btn_manageStudentDetails
             // 
             this.btn_manageStudentDetails.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
@@ -88,7 +107,6 @@
             this.btn_manageStudentDetails.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_manageStudentDetails.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_manageStudentDetails.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_manageStudentDetails.FillColor = System.Drawing.Color.LimeGreen;
             this.btn_manageStudentDetails.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_manageStudentDetails.ForeColor = System.Drawing.Color.Black;
             this.btn_manageStudentDetails.Location = new System.Drawing.Point(0, 800);
@@ -108,7 +126,6 @@
             this.btn_logout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_logout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_logout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_logout.FillColor = System.Drawing.Color.LimeGreen;
             this.btn_logout.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_logout.ForeColor = System.Drawing.Color.Black;
             this.btn_logout.Location = new System.Drawing.Point(0, 900);
@@ -128,7 +145,6 @@
             this.btn_results.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_results.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_results.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_results.FillColor = System.Drawing.Color.LimeGreen;
             this.btn_results.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_results.ForeColor = System.Drawing.Color.Black;
             this.btn_results.Location = new System.Drawing.Point(0, 700);
@@ -148,7 +164,6 @@
             this.btn_deleteQues.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_deleteQues.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_deleteQues.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_deleteQues.FillColor = System.Drawing.Color.LimeGreen;
             this.btn_deleteQues.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_deleteQues.ForeColor = System.Drawing.Color.Black;
             this.btn_deleteQues.Location = new System.Drawing.Point(0, 600);
@@ -168,7 +183,6 @@
             this.btn_updateQues.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_updateQues.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_updateQues.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_updateQues.FillColor = System.Drawing.Color.LimeGreen;
             this.btn_updateQues.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_updateQues.ForeColor = System.Drawing.Color.Black;
             this.btn_updateQues.Location = new System.Drawing.Point(0, 500);
@@ -184,7 +198,7 @@
             this.btn_exit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_exit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_exit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_exit.FillColor = System.Drawing.Color.LimeGreen;
+            this.btn_exit.FillColor = System.Drawing.Color.Transparent;
             this.btn_exit.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_exit.ForeColor = System.Drawing.Color.White;
             this.btn_exit.Image = ((System.Drawing.Image)(resources.GetObject("btn_exit.Image")));
@@ -205,7 +219,6 @@
             this.btn_addNewQues.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_addNewQues.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_addNewQues.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_addNewQues.FillColor = System.Drawing.Color.LimeGreen;
             this.btn_addNewQues.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addNewQues.ForeColor = System.Drawing.Color.Black;
             this.btn_addNewQues.Location = new System.Drawing.Point(0, 300);
@@ -237,6 +250,8 @@
             // 
             // panel2
             // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel2.Controls.Add(this.uC_AddQuestionsToPapers1);
             this.panel2.Controls.Add(this.uC_studentResults1);
             this.panel2.Controls.Add(this.uC_manageStudents1);
@@ -268,65 +283,6 @@
             // 
             this.guna2Elipse5.TargetControl = this.panel2;
             // 
-            // btn_addQuestToPapers
-            // 
-            this.btn_addQuestToPapers.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btn_addQuestToPapers.CheckedState.BorderColor = System.Drawing.Color.White;
-            this.btn_addQuestToPapers.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btn_addQuestToPapers.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.btn_addQuestToPapers.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_addQuestToPapers.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_addQuestToPapers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_addQuestToPapers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_addQuestToPapers.FillColor = System.Drawing.Color.LimeGreen;
-            this.btn_addQuestToPapers.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_addQuestToPapers.ForeColor = System.Drawing.Color.Black;
-            this.btn_addQuestToPapers.Location = new System.Drawing.Point(0, 400);
-            this.btn_addQuestToPapers.Name = "btn_addQuestToPapers";
-            this.btn_addQuestToPapers.Size = new System.Drawing.Size(397, 68);
-            this.btn_addQuestToPapers.TabIndex = 11;
-            this.btn_addQuestToPapers.Text = "Add Questions to Papers";
-            this.btn_addQuestToPapers.Click += new System.EventHandler(this.btn_addQuestToPapers_Click);
-            // 
-            // uC_studentResults1
-            // 
-            this.uC_studentResults1.Location = new System.Drawing.Point(0, 0);
-            this.uC_studentResults1.Name = "uC_studentResults1";
-            this.uC_studentResults1.Size = new System.Drawing.Size(1507, 1155);
-            this.uC_studentResults1.TabIndex = 4;
-            // 
-            // uC_manageStudents1
-            // 
-            this.uC_manageStudents1.Location = new System.Drawing.Point(0, 0);
-            this.uC_manageStudents1.Name = "uC_manageStudents1";
-            this.uC_manageStudents1.Size = new System.Drawing.Size(1507, 1155);
-            this.uC_manageStudents1.TabIndex = 3;
-            // 
-            // uC_viewAndDeleteQuestions1
-            // 
-            this.uC_viewAndDeleteQuestions1.Location = new System.Drawing.Point(0, 0);
-            this.uC_viewAndDeleteQuestions1.Name = "uC_viewAndDeleteQuestions1";
-            this.uC_viewAndDeleteQuestions1.Size = new System.Drawing.Size(1507, 1155);
-            this.uC_viewAndDeleteQuestions1.TabIndex = 2;
-            this.uC_viewAndDeleteQuestions1.Load += new System.EventHandler(this.uC_viewAndDeleteQuestions1_Load);
-            // 
-            // uC_updateQuestions1
-            // 
-            this.uC_updateQuestions1.BackColor = System.Drawing.Color.White;
-            this.uC_updateQuestions1.Location = new System.Drawing.Point(0, 0);
-            this.uC_updateQuestions1.Name = "uC_updateQuestions1";
-            this.uC_updateQuestions1.Size = new System.Drawing.Size(1511, 1155);
-            this.uC_updateQuestions1.TabIndex = 1;
-            this.uC_updateQuestions1.Load += new System.EventHandler(this.uC_updateQuestions1_Load);
-            // 
-            // uC_addNewQuestion1
-            // 
-            this.uC_addNewQuestion1.BackColor = System.Drawing.Color.White;
-            this.uC_addNewQuestion1.Location = new System.Drawing.Point(3, 0);
-            this.uC_addNewQuestion1.Name = "uC_addNewQuestion1";
-            this.uC_addNewQuestion1.Size = new System.Drawing.Size(1507, 1155);
-            this.uC_addNewQuestion1.TabIndex = 0;
-            // 
             // guna2Elipse6
             // 
             this.guna2Elipse6.TargetControl = this.panel2;
@@ -337,6 +293,53 @@
             this.uC_AddQuestionsToPapers1.Name = "uC_AddQuestionsToPapers1";
             this.uC_AddQuestionsToPapers1.Size = new System.Drawing.Size(1507, 1155);
             this.uC_AddQuestionsToPapers1.TabIndex = 5;
+            // 
+            // uC_studentResults1
+            // 
+            this.uC_studentResults1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_studentResults1.BackgroundImage")));
+            this.uC_studentResults1.Location = new System.Drawing.Point(0, 0);
+            this.uC_studentResults1.Name = "uC_studentResults1";
+            this.uC_studentResults1.Size = new System.Drawing.Size(1507, 1155);
+            this.uC_studentResults1.TabIndex = 4;
+            // 
+            // uC_manageStudents1
+            // 
+            this.uC_manageStudents1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_manageStudents1.BackgroundImage")));
+            this.uC_manageStudents1.Location = new System.Drawing.Point(0, 0);
+            this.uC_manageStudents1.Name = "uC_manageStudents1";
+            this.uC_manageStudents1.Size = new System.Drawing.Size(1507, 1155);
+            this.uC_manageStudents1.TabIndex = 3;
+            // 
+            // uC_viewAndDeleteQuestions1
+            // 
+            this.uC_viewAndDeleteQuestions1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_viewAndDeleteQuestions1.BackgroundImage")));
+            this.uC_viewAndDeleteQuestions1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.uC_viewAndDeleteQuestions1.Location = new System.Drawing.Point(0, 0);
+            this.uC_viewAndDeleteQuestions1.Name = "uC_viewAndDeleteQuestions1";
+            this.uC_viewAndDeleteQuestions1.Size = new System.Drawing.Size(1507, 1155);
+            this.uC_viewAndDeleteQuestions1.TabIndex = 2;
+            this.uC_viewAndDeleteQuestions1.Load += new System.EventHandler(this.uC_viewAndDeleteQuestions1_Load);
+            // 
+            // uC_updateQuestions1
+            // 
+            this.uC_updateQuestions1.BackColor = System.Drawing.Color.White;
+            this.uC_updateQuestions1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_updateQuestions1.BackgroundImage")));
+            this.uC_updateQuestions1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.uC_updateQuestions1.Location = new System.Drawing.Point(0, 0);
+            this.uC_updateQuestions1.Name = "uC_updateQuestions1";
+            this.uC_updateQuestions1.Size = new System.Drawing.Size(1511, 1155);
+            this.uC_updateQuestions1.TabIndex = 1;
+            this.uC_updateQuestions1.Load += new System.EventHandler(this.uC_updateQuestions1_Load);
+            // 
+            // uC_addNewQuestion1
+            // 
+            this.uC_addNewQuestion1.BackColor = System.Drawing.Color.White;
+            this.uC_addNewQuestion1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_addNewQuestion1.BackgroundImage")));
+            this.uC_addNewQuestion1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.uC_addNewQuestion1.Location = new System.Drawing.Point(0, 0);
+            this.uC_addNewQuestion1.Name = "uC_addNewQuestion1";
+            this.uC_addNewQuestion1.Size = new System.Drawing.Size(1507, 1155);
+            this.uC_addNewQuestion1.TabIndex = 0;
             // 
             // Admin_form
             // 

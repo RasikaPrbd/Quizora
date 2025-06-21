@@ -24,7 +24,7 @@ namespace Quizora
 
         private void ExamTimeInputForm_Load(object sender, EventArgs e)
         {
-
+            txt_duration.Focus();
         }
 
         private void txt_Duration_TextChanged(object sender, EventArgs e)

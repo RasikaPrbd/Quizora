@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_studentResults));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,7 +45,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label1.Location = new System.Drawing.Point(130, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(230, 37);
@@ -54,8 +57,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(118, 199);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label2.Location = new System.Drawing.Point(122, 187);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(218, 25);
             this.label2.TabIndex = 3;
@@ -64,8 +69,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(118, 272);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label3.Location = new System.Drawing.Point(122, 260);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(178, 25);
             this.label3.TabIndex = 4;
@@ -75,7 +82,7 @@
             // 
             this.txt_searchRegNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_searchRegNo.ForeColor = System.Drawing.Color.Black;
-            this.txt_searchRegNo.Location = new System.Drawing.Point(374, 196);
+            this.txt_searchRegNo.Location = new System.Drawing.Point(378, 184);
             this.txt_searchRegNo.Name = "txt_searchRegNo";
             this.txt_searchRegNo.Size = new System.Drawing.Size(121, 30);
             this.txt_searchRegNo.TabIndex = 16;
@@ -87,7 +94,7 @@
             this.cmb_filterPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_filterPaper.ForeColor = System.Drawing.Color.Black;
             this.cmb_filterPaper.FormattingEnabled = true;
-            this.cmb_filterPaper.Location = new System.Drawing.Point(374, 269);
+            this.cmb_filterPaper.Location = new System.Drawing.Point(378, 257);
             this.cmb_filterPaper.Name = "cmb_filterPaper";
             this.cmb_filterPaper.Size = new System.Drawing.Size(121, 33);
             this.cmb_filterPaper.TabIndex = 17;
@@ -106,8 +113,9 @@
             this.dgv_results.RowHeadersWidth = 51;
             this.dgv_results.RowTemplate.Height = 24;
             this.dgv_results.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_results.Size = new System.Drawing.Size(1209, 599);
+            this.dgv_results.Size = new System.Drawing.Size(1326, 599);
             this.dgv_results.TabIndex = 33;
+            this.dgv_results.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_results_CellContentClick);
             // 
             // guna2Elipse1
             // 
@@ -115,15 +123,16 @@
             // 
             // btn_Search
             // 
+            this.btn_Search.BackColor = System.Drawing.Color.Transparent;
             this.btn_Search.BorderRadius = 18;
             this.btn_Search.BorderThickness = 1;
             this.btn_Search.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_Search.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_Search.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_Search.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Search.FillColor = System.Drawing.Color.LimeGreen;
+            this.btn_Search.FillColor = System.Drawing.Color.RoyalBlue;
             this.btn_Search.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search.ForeColor = System.Drawing.Color.White;
+            this.btn_Search.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_Search.HoverState.BorderColor = System.Drawing.Color.Black;
             this.btn_Search.HoverState.FillColor = System.Drawing.Color.White;
             this.btn_Search.HoverState.ForeColor = System.Drawing.Color.LimeGreen;
@@ -136,13 +145,15 @@
             // 
             // btn_clearFilters
             // 
+            this.btn_clearFilters.BackColor = System.Drawing.Color.Transparent;
+            this.btn_clearFilters.BorderColor = System.Drawing.Color.Transparent;
             this.btn_clearFilters.BorderRadius = 18;
             this.btn_clearFilters.BorderThickness = 1;
             this.btn_clearFilters.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_clearFilters.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_clearFilters.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_clearFilters.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_clearFilters.FillColor = System.Drawing.Color.LimeGreen;
+            this.btn_clearFilters.FillColor = System.Drawing.Color.RoyalBlue;
             this.btn_clearFilters.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clearFilters.ForeColor = System.Drawing.Color.White;
             this.btn_clearFilters.HoverState.BorderColor = System.Drawing.Color.Black;
@@ -159,6 +170,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.Controls.Add(this.btn_clearFilters);
             this.Controls.Add(this.dgv_results);
             this.Controls.Add(this.btn_Search);

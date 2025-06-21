@@ -194,5 +194,65 @@ namespace Quizora.teacher_UC
             cmb_QuestionNum.SelectedIndex = -1;
             cmb_answer.SelectedIndex = -1;
         }
+
+        private void txt_Question_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                txt_option1.Focus(); 
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_Question.Focus(); 
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                txt_option2.Focus(); 
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_option1.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                txt_option3.Focus(); 
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_option2.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                txt_option4.Focus(); 
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_option3.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

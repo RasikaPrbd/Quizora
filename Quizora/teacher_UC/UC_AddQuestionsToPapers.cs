@@ -77,10 +77,11 @@ namespace Quizora.teacher_UC
             {
                 var questions = res.ResultAs<Dictionary<string, object>>();
                 questionCounter = questions.Count + 1; // ✅ keep in sync
+                txt_Question.Focus();
             }
             else
             {
-                questionCounter = 1;
+                questionCounter = 0;
             }
 
             lbl_qNum.Text = questionCounter.ToString("D2"); // ✅ always update label
@@ -219,6 +220,66 @@ namespace Quizora.teacher_UC
                 // 🔁 Reset question counter and label
                 questionCounter = 1;
                 lbl_qNum.Text = "01";
+            }
+        }
+
+        private void txt_Question_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_option1.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_option2.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_Question.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_option3.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_option1.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_option4.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_option2.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_option3.Focus();
+                e.SuppressKeyPress = true;
             }
         }
     }

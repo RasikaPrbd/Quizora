@@ -46,6 +46,7 @@ namespace Quizora.teacher_UC
                 MessageBox.Show("connection is successfully");
             } */
             lbl_qNum.Text = "01";
+            txt_paperNumber.Focus();
         }
 
         private void SaveQuestion()
@@ -79,6 +80,7 @@ namespace Quizora.teacher_UC
             txt_option3.Clear();
             txt_option4.Clear();
             cmb_answer.SelectedIndex = -1;
+            txt_Question.Focus();
         }
 
         private void btn_next_Click_1(object sender, EventArgs e)
@@ -106,6 +108,7 @@ namespace Quizora.teacher_UC
             txt_option3.Clear();
             txt_option4.Clear();
             cmb_answer.SelectedIndex = -1;
+            txt_Question.Focus();
         }
 
         private async void btn_finish_Click(object sender, EventArgs e)
@@ -122,6 +125,75 @@ namespace Quizora.teacher_UC
                 {
                     MessageBox.Show("Invalid time. Time not saved.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+        }
+
+        private void txt_paperNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_Question.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_Question_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_option1.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_option2.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_Question.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_option3.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_option1.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txt_option4.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_option2.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txt_option4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                txt_option3.Focus();
+                e.SuppressKeyPress = true;
             }
         }
     }

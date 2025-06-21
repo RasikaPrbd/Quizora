@@ -27,6 +27,8 @@ namespace Quizora.teacher_UC
         public UC_studentResults()
         {
             InitializeComponent();
+            dgv_results.CellContentClick += dgv_results_CellContentClick;
+
         }
 
         private async void UC_studentResults_Load(object sender, EventArgs e)
@@ -40,6 +42,7 @@ namespace Quizora.teacher_UC
             }
 
             await LoadAllResults();
+
         }
 
         private async Task LoadAllResults()
@@ -99,6 +102,8 @@ namespace Quizora.teacher_UC
         {
             dgv_results.Rows.Clear();
             dgv_results.Columns.Clear();
+            dgv_results.DefaultCellStyle.Font = new Font("Segoe UI", 10); // Cell text
+            dgv_results.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold); // Column headers
 
             dgv_results.Columns.Add("StudentName", "Student Name");
             dgv_results.Columns.Add("RegNo", "Registration No");
@@ -106,6 +111,16 @@ namespace Quizora.teacher_UC
             dgv_results.Columns.Add("DateTime", "Date/Time");
             dgv_results.Columns.Add("Score", "Score");
             dgv_results.Columns.Add("Percentage", "Percentage");
+
+            if (!dgv_results.Columns.Contains("View"))
+            {
+                DataGridViewLinkColumn linkColumn = new DataGridViewLinkColumn();
+                linkColumn.HeaderText = "Details";
+                linkColumn.Name = "View";
+                linkColumn.Text = "View";
+                linkColumn.UseColumnTextForLinkValue = true;
+                dgv_results.Columns.Add(linkColumn);
+            }
 
             foreach (var item in results)
             {
@@ -115,7 +130,8 @@ namespace Quizora.teacher_UC
                     item.PaperNo,
                     item.DateTime,
                     $"{item.CorrectAnswers}/{item.TotalQuestions}",
-                    item.Percentage
+                    item.Percentage,
+                    "View"
                 );
             }
 
@@ -141,6 +157,20 @@ namespace Quizora.teacher_UC
             txt_searchRegNo.Clear();
             cmb_filterPaper.SelectedIndex = -1;
             DisplayResults(allResults); // reload all
+        }
+
+        private void dgv_results_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            if (e.RowIndex >= 0 && dgv_results.Columns[e.ColumnIndex].Name == "View")
+            {
+                string regNo = dgv_results.Rows[e.RowIndex].Cells["RegNo"].Value.ToString();
+                string paperNo = dgv_results.Rows[e.RowIndex].Cells["PaperNo"].Value.ToString();
+
+                DetailedResultForm detailsForm = new DetailedResultForm(regNo, paperNo);
+                detailsForm.ShowDialog();
+            }
         }
     }
 

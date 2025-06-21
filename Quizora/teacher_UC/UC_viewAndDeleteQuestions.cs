@@ -68,6 +68,31 @@ namespace Quizora.teacher_UC
                     .ToList();
 
                 dgView_paper.DataSource = questionList;
+
+                // 🔻 Remove PaperNumber column (if it exists)
+                if (dgView_paper.Columns.Contains("PaperNo"))
+                {
+                    dgView_paper.Columns["PaperNo"].Visible = false;
+                }
+                // ✅ Resize QuestionNo column (make it narrower)
+                if (dgView_paper.Columns.Contains("QuestionNo"))
+                {
+                    dgView_paper.Columns["QuestionNo"].Width = 60; // Adjust width as needed (e.g., 50–70)
+                }
+
+                // Fix DataGridView appearance
+                dgView_paper.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgView_paper.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+                dgView_paper.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                dgView_paper.ColumnHeadersHeight = 35;
+
+                dgView_paper.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+                dgView_paper.RowTemplate.Height = 30;
+                dgView_paper.RowHeadersVisible = false;
+                dgView_paper.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgView_paper.AllowUserToAddRows = false;
+                dgView_paper.AllowUserToResizeRows = false;
+                dgView_paper.ReadOnly = true;
             }
         }
 

@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_viewAndDeleteQuestions));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmb_PaperNum = new System.Windows.Forms.ComboBox();
@@ -44,7 +45,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label1.Location = new System.Drawing.Point(130, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(405, 37);
@@ -54,8 +57,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(132, 251);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label2.Location = new System.Drawing.Point(132, 195);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 25);
             this.label2.TabIndex = 2;
@@ -67,7 +72,7 @@
             this.cmb_PaperNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_PaperNum.ForeColor = System.Drawing.Color.Black;
             this.cmb_PaperNum.FormattingEnabled = true;
-            this.cmb_PaperNum.Location = new System.Drawing.Point(322, 248);
+            this.cmb_PaperNum.Location = new System.Drawing.Point(312, 187);
             this.cmb_PaperNum.Name = "cmb_PaperNum";
             this.cmb_PaperNum.Size = new System.Drawing.Size(121, 33);
             this.cmb_PaperNum.TabIndex = 3;
@@ -75,6 +80,7 @@
             // 
             // btn_delete
             // 
+            this.btn_delete.BackColor = System.Drawing.Color.Transparent;
             this.btn_delete.BorderRadius = 18;
             this.btn_delete.BorderThickness = 1;
             this.btn_delete.CheckedState.FillColor = System.Drawing.Color.White;
@@ -128,7 +134,7 @@
             this.dgView_paper.RowHeadersVisible = false;
             this.dgView_paper.RowHeadersWidth = 51;
             this.dgView_paper.RowTemplate.Height = 24;
-            this.dgView_paper.Size = new System.Drawing.Size(1333, 621);
+            this.dgView_paper.Size = new System.Drawing.Size(1402, 621);
             this.dgView_paper.TabIndex = 32;
             this.dgView_paper.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgView_paper.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -160,6 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.Controls.Add(this.dgView_paper);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.cmb_PaperNum);

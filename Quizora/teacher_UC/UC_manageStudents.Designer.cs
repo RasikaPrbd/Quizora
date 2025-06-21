@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_manageStudents));
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_students = new System.Windows.Forms.DataGridView();
             this.btn_add = new Guna.UI2.WinForms.Guna2Button();
@@ -41,7 +42,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label1.Location = new System.Drawing.Point(130, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(416, 37);
@@ -68,6 +71,7 @@
             // 
             // btn_add
             // 
+            this.btn_add.BackColor = System.Drawing.Color.Transparent;
             this.btn_add.BorderRadius = 18;
             this.btn_add.BorderThickness = 1;
             this.btn_add.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -88,6 +92,7 @@
             // 
             // btn_edit
             // 
+            this.btn_edit.BackColor = System.Drawing.Color.Transparent;
             this.btn_edit.BorderRadius = 18;
             this.btn_edit.BorderThickness = 1;
             this.btn_edit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -108,6 +113,8 @@
             // 
             // btn_delete
             // 
+            this.btn_delete.BackColor = System.Drawing.Color.Transparent;
+            this.btn_delete.BorderColor = System.Drawing.Color.Transparent;
             this.btn_delete.BorderRadius = 18;
             this.btn_delete.BorderThickness = 1;
             this.btn_delete.CheckedState.FillColor = System.Drawing.Color.White;
@@ -116,7 +123,7 @@
             this.btn_delete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_delete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_delete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_delete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btn_delete.FillColor = System.Drawing.Color.Red;
             this.btn_delete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_delete.ForeColor = System.Drawing.Color.White;
             this.btn_delete.HoverState.BorderColor = System.Drawing.Color.Black;
@@ -137,6 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.btn_add);

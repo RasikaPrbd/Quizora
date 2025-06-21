@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_updateQuestions));
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.label2 = new System.Windows.Forms.Label();
@@ -59,7 +60,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label1.Location = new System.Drawing.Point(130, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(273, 37);
@@ -117,8 +120,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(132, 467);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label5.Location = new System.Drawing.Point(141, 433);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 25);
             this.label5.TabIndex = 7;
@@ -134,7 +139,7 @@
             "Option 02",
             "Option 03",
             "Option 04"});
-            this.cmb_answer.Location = new System.Drawing.Point(1038, 727);
+            this.cmb_answer.Location = new System.Drawing.Point(1047, 693);
             this.cmb_answer.Name = "cmb_answer";
             this.cmb_answer.Size = new System.Drawing.Size(198, 33);
             this.cmb_answer.TabIndex = 28;
@@ -142,8 +147,10 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(865, 730);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label10.Location = new System.Drawing.Point(874, 696);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(155, 25);
             this.label10.TabIndex = 27;
@@ -152,16 +159,19 @@
             // txt_option4
             // 
             this.txt_option4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_option4.Location = new System.Drawing.Point(290, 852);
+            this.txt_option4.Location = new System.Drawing.Point(299, 818);
             this.txt_option4.Name = "txt_option4";
             this.txt_option4.Size = new System.Drawing.Size(427, 30);
             this.txt_option4.TabIndex = 26;
+            this.txt_option4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_option4_KeyDown);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(132, 855);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label9.Location = new System.Drawing.Point(141, 821);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(103, 25);
             this.label9.TabIndex = 25;
@@ -170,16 +180,19 @@
             // txt_option3
             // 
             this.txt_option3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_option3.Location = new System.Drawing.Point(290, 770);
+            this.txt_option3.Location = new System.Drawing.Point(299, 736);
             this.txt_option3.Name = "txt_option3";
             this.txt_option3.Size = new System.Drawing.Size(427, 30);
             this.txt_option3.TabIndex = 24;
+            this.txt_option3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_option3_KeyDown);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(132, 773);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label8.Location = new System.Drawing.Point(141, 739);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 25);
             this.label8.TabIndex = 23;
@@ -188,16 +201,19 @@
             // txt_option2
             // 
             this.txt_option2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_option2.Location = new System.Drawing.Point(290, 692);
+            this.txt_option2.Location = new System.Drawing.Point(299, 658);
             this.txt_option2.Name = "txt_option2";
             this.txt_option2.Size = new System.Drawing.Size(427, 30);
             this.txt_option2.TabIndex = 22;
+            this.txt_option2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_option2_KeyDown);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(132, 695);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label7.Location = new System.Drawing.Point(141, 661);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 25);
             this.label7.TabIndex = 21;
@@ -206,16 +222,19 @@
             // txt_option1
             // 
             this.txt_option1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_option1.Location = new System.Drawing.Point(290, 613);
+            this.txt_option1.Location = new System.Drawing.Point(299, 579);
             this.txt_option1.Name = "txt_option1";
             this.txt_option1.Size = new System.Drawing.Size(427, 30);
             this.txt_option1.TabIndex = 20;
+            this.txt_option1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_option1_KeyDown);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(132, 616);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label6.Location = new System.Drawing.Point(141, 582);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 25);
             this.label6.TabIndex = 19;
@@ -224,14 +243,16 @@
             // txt_Question
             // 
             this.txt_Question.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Question.Location = new System.Drawing.Point(290, 464);
+            this.txt_Question.Location = new System.Drawing.Point(299, 430);
             this.txt_Question.Multiline = true;
             this.txt_Question.Name = "txt_Question";
             this.txt_Question.Size = new System.Drawing.Size(543, 86);
             this.txt_Question.TabIndex = 18;
+            this.txt_Question.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Question_KeyDown);
             // 
             // btn_update
             // 
+            this.btn_update.BackColor = System.Drawing.Color.Transparent;
             this.btn_update.BorderRadius = 18;
             this.btn_update.BorderThickness = 1;
             this.btn_update.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -239,11 +260,11 @@
             this.btn_update.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_update.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_update.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_update.ForeColor = System.Drawing.Color.White;
+            this.btn_update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_update.HoverState.BorderColor = System.Drawing.Color.Black;
             this.btn_update.HoverState.FillColor = System.Drawing.Color.White;
             this.btn_update.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(225)))));
-            this.btn_update.Location = new System.Drawing.Point(870, 835);
+            this.btn_update.Location = new System.Drawing.Point(879, 801);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(180, 45);
             this.btn_update.TabIndex = 29;
@@ -252,6 +273,7 @@
             // 
             // btn_reset
             // 
+            this.btn_reset.BackColor = System.Drawing.Color.Transparent;
             this.btn_reset.BorderRadius = 18;
             this.btn_reset.BorderThickness = 1;
             this.btn_reset.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -259,11 +281,11 @@
             this.btn_reset.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_reset.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_reset.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reset.ForeColor = System.Drawing.Color.White;
+            this.btn_reset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_reset.HoverState.BorderColor = System.Drawing.Color.Black;
             this.btn_reset.HoverState.FillColor = System.Drawing.Color.White;
             this.btn_reset.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(225)))));
-            this.btn_reset.Location = new System.Drawing.Point(1142, 837);
+            this.btn_reset.Location = new System.Drawing.Point(1151, 803);
             this.btn_reset.Name = "btn_reset";
             this.btn_reset.Size = new System.Drawing.Size(180, 45);
             this.btn_reset.TabIndex = 30;
@@ -273,8 +295,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(132, 342);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label4.Location = new System.Drawing.Point(132, 333);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 25);
             this.label4.TabIndex = 31;
@@ -282,11 +306,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.cmb_QuestionNum);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cmb_PaperNum);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(77, 196);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.groupBox1.Location = new System.Drawing.Point(84, 162);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1201, 117);
             this.groupBox1.TabIndex = 32;
@@ -295,7 +321,7 @@
             // txt_Time
             // 
             this.txt_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Time.Location = new System.Drawing.Point(290, 342);
+            this.txt_Time.Location = new System.Drawing.Point(290, 333);
             this.txt_Time.Name = "txt_Time";
             this.txt_Time.Size = new System.Drawing.Size(81, 30);
             this.txt_Time.TabIndex = 33;
@@ -303,8 +329,10 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(377, 347);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label11.Location = new System.Drawing.Point(377, 338);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 25);
             this.label11.TabIndex = 34;
@@ -315,6 +343,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txt_Time);
             this.Controls.Add(this.groupBox1);

@@ -52,3 +52,8 @@ C:\Users\Rasika\OneDrive\Desktop\QUIZORA\Quizora\Quizora\obj\Debug\Quizora.teach
 C:\Users\Rasika\OneDrive\Desktop\QUIZORA\Quizora\Quizora\obj\Debug\Quizora.teacher_UC.UC_studentResults.resources
 C:\Users\Rasika\OneDrive\Desktop\QUIZORA\Quizora\Quizora\obj\Debug\Quizora.ExamTimeInputForm.resources
 C:\Users\Rasika\OneDrive\Desktop\QUIZORA\Quizora\Quizora\obj\Debug\Quizora.teacher_UC.UC_AddQuestionsToPapers.resources
+C:\Users\Rasika\OneDrive\Desktop\QUIZORA\Quizora\Quizora\obj\Debug\Quizora.DetailedResultForm.resources
+C:\Users\Rasika\OneDrive\Desktop\QUIZORA\Quizora\Quizora\bin\Debug\Quizora.exe.manifest
+C:\Users\Rasika\OneDrive\Desktop\QUIZORA\Quizora\Quizora\bin\Debug\Quizora.application
+C:\Users\Rasika\OneDrive\Desktop\QUIZORA\Quizora\Quizora\obj\Debug\Quizora.exe.manifest
+C:\Users\Rasika\OneDrive\Desktop\QUIZORA\Quizora\Quizora\obj\Debug\Quizora.application
